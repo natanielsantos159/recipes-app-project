@@ -1,9 +1,9 @@
-.icons-header{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+.icons-header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
-.link-icon{
-    display: flex;
+.link-icon {
+  display: flex;
 }
