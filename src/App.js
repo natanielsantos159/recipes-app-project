@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
     <Provider>
     <Switch>
-      <Route exact path="/" component={}/>
+      <Route exact path="/" component={} />
       <Route path="/comidas" component={} />
       <Route path="/bebidas" component={} />
       <Route path="/comidas/{id-da-receita}" component={}/>
