@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import Provider from './context/Provider';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div>
     <BrowserRouter>
+    <Provider>
     <Switch>
       <Route exact path="/" component={}/>
       <Route path="/comidas" component={} />
@@ -25,6 +27,7 @@ function App() {
       <Route path="/receitas-feitas" component={}/>
       <Route path="/receitas-favoritas" component={}/>
     </Switch>
+    </Provider>
     </BrowserRouter>
     </div>
   );
