@@ -1,6 +1,12 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const Comidas = () => (<Header titlePage="Comidas" />);
+const Comidas = () => (
+  <main>
+    <Header titlePage="Comidas" />
+    <Footer />
+  </main>
+);
 
 export default Comidas;
