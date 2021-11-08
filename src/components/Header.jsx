@@ -18,6 +18,7 @@ const Header = ({ titlePage, show }) => {
         {show
         && (
           <button
+            className="search-btn"
             type="button"
             onClick={ () => setVisible(!visible) }
           >

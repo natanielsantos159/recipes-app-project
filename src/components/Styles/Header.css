@@ -7,3 +7,8 @@
 .link-icon {
   display: flex;
 }
+
+.search-btn {
+  background-color: transparent;
+  border-style: none;
+}
