@@ -9,6 +9,13 @@ const SearchBar = () => {
     filterText,
     setFilterText,
     setFoods } = useContext(AppContext);
+  const handleClick = async () => {
+    if (filterRadio === 'first-letter' && filterText.length > 1) {
+      global.alert('Sua busca deve conter somente 1 (um) caracter');
+    }
+    setFoods(await getFoods(filterRadio, filterText));
+  };
+
   return (
     <form>
       <input
@@ -51,7 +58,7 @@ const SearchBar = () => {
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={ async () => setFoods(await getFoods(filterRadio, filterText)) }
+        onClick={ async () => handleClick() }
       >
         Buscar
       </button>
