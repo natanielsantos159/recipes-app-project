@@ -4,10 +4,16 @@ import AppContext from './AppContext';
 
 function Provider({ children }) {
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const contextValue = {
     loading,
     setLoading,
+    email,
+    setEmail,
+    password,
+    setPassword,
   };
 
   return (

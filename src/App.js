@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitaFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
