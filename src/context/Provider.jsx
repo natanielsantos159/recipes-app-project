@@ -6,6 +6,9 @@ function Provider({ children }) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [filterRadio, setFilterRadio] = useState('');
+  const [filterText, setFilterText] = useState('');
+  const [foods, setFoods] = useState([]);
 
   const contextValue = {
     loading,
@@ -14,6 +17,12 @@ function Provider({ children }) {
     setEmail,
     password,
     setPassword,
+    filterRadio,
+    setFilterRadio,
+    filterText,
+    setFilterText,
+    foods,
+    setFoods,
   };
 
   return (
