@@ -3,3 +3,7 @@ header{
     width: 100%;
     justify-content: space-around;
 }
+
+.link-icon{
+    display: flex;
+}
