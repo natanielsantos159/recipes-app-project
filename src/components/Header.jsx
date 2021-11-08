@@ -6,7 +6,7 @@ import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 import './Styles/Header.css';
 
-const Header = ({ titlePage }) => {
+const Header = ({ titlePage, show }) => {
   const [visible, setVisible] = useState(false);
   return (
     <header>
@@ -15,13 +15,18 @@ const Header = ({ titlePage }) => {
           <img src={ profileIcon } data-testid="profile-top-btn" alt="profile-icon" />
         </Link>
         <h1 data-testid="page-title">{titlePage}</h1>
-        <button type="button" onClick={ () => setVisible(!visible) }>
-          <img
-            src={ searchIcon }
-            alt="search-icon"
-            data-testid="search-top-btn"
-          />
-        </button>
+        {show
+        && (
+          <button
+            type="button"
+            onClick={ () => setVisible(!visible) }
+          >
+            <img
+              src={ searchIcon }
+              alt="search-icon"
+              data-testid="search-top-btn"
+            />
+          </button>)}
       </section>
       {visible && <SearchBar />}
     </header>
@@ -29,7 +34,12 @@ const Header = ({ titlePage }) => {
 };
 
 Header.propTypes = {
+  show: PropTypes.bool,
   titlePage: PropTypes.string.isRequired,
+};
+
+Header.defaultProps = {
+  show: true,
 };
 
 export default Header;
