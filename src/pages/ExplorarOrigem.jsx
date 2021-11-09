@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const explorarOrigem = () => (
-  <Header titlePage="Explorar Origem" />
+  <main>
+    <Header titlePage="Explorar Origem" />
+    <Footer />
+  </main>
 );
 
 export default explorarOrigem;
