@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import FilterCategorie from './FilterCategorie';
 import SearchBar from './SearchBar';
 import './Styles/Header.css';
 
@@ -30,6 +31,7 @@ const Header = ({ titlePage, show }) => {
           </button>)}
       </section>
       {visible && <SearchBar />}
+      <FilterCategorie />
     </header>
   );
 };
