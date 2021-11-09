@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
-import getFoods from '../api/services';
+import getFoods from '../api/meals';
+import getDrinks from '../api/drinks';
 
 const SearchBar = () => {
   const {
@@ -8,12 +9,18 @@ const SearchBar = () => {
     setFilterRadio,
     filterText,
     setFilterText,
-    setFoods } = useContext(AppContext);
+    setFoods,
+    setDrinks } = useContext(AppContext);
+
   const handleClick = async () => {
+    const type = document.getElementById('page-title');
+
     if (filterRadio === 'first-letter' && filterText.length > 1) {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
-    setFoods(await getFoods(filterRadio, filterText));
+    return type.innerText === 'Comidas'
+      ? setFoods(await getFoods(filterRadio, filterText))
+      : setDrinks(await getDrinks(filterRadio, filterText));
   };
 
   return (
