@@ -9,6 +9,7 @@ function Provider({ children }) {
   const [filterRadio, setFilterRadio] = useState('');
   const [filterText, setFilterText] = useState('');
   const [foods, setFoods] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
   const contextValue = {
     loading,
@@ -23,6 +24,8 @@ function Provider({ children }) {
     setFilterText,
     foods,
     setFoods,
+    drinks,
+    setDrinks,
   };
 
   return (
