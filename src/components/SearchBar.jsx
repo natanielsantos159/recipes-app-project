@@ -25,7 +25,10 @@ const SearchBar = () => {
       getFoods(filterRadio, filterText)
         .then((response) => {
           setFoods(response);
-          if (response.length === 1) {
+          if (!response) {
+            global
+              .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+          } else if (response.length === 1) {
             history.push(`/comidas/${response[0].idMeal}`);
           }
         });
@@ -33,7 +36,10 @@ const SearchBar = () => {
       getDrinks(filterRadio, filterText)
         .then((response) => {
           setDrinks(response);
-          if (response.length === 1) {
+          if (!response) {
+            global
+              .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+          } else if (response.length === 1) {
             history.push(`/bebidas/${response[0].idDrink}`);
           }
         });
