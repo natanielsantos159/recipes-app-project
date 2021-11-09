@@ -12,6 +12,7 @@ const SearchBar = () => {
     setFilterText,
     setFoods,
     setDrinks,
+    setLouden,
   } = useContext(AppContext);
   const { pathname } = useLocation();
   const history = useHistory();
@@ -30,6 +31,8 @@ const SearchBar = () => {
               .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
           } else if (response.length === 1) {
             history.push(`/comidas/${response[0].idMeal}`);
+          } else {
+            setLouden(true);
           }
         });
     } else {
@@ -41,6 +44,8 @@ const SearchBar = () => {
               .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
           } else if (response.length === 1) {
             history.push(`/bebidas/${response[0].idDrink}`);
+          } else {
+            setLouden(true);
           }
         });
     }

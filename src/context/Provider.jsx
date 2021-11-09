@@ -10,6 +10,7 @@ function Provider({ children }) {
   const [filterText, setFilterText] = useState('');
   const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [louden, setLouden] = useState(false);
 
   const contextValue = {
     loading,
@@ -26,6 +27,8 @@ function Provider({ children }) {
     setFoods,
     drinks,
     setDrinks,
+    louden,
+    setLouden,
   };
 
   return (
