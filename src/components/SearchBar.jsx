@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import getFoods from '../api/meals';
 import getDrinks from '../api/drinks';
@@ -10,17 +11,33 @@ const SearchBar = () => {
     filterText,
     setFilterText,
     setFoods,
-    setDrinks } = useContext(AppContext);
+    setDrinks,
+  } = useContext(AppContext);
+  const { pathname } = useLocation();
+  const history = useHistory();
 
-  const handleClick = async () => {
-    const type = document.getElementById('page-title');
-
+  const handleClick = () => {
     if (filterRadio === 'first-letter' && filterText.length > 1) {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
-    return type.innerText === 'Comidas'
-      ? setFoods(await getFoods(filterRadio, filterText))
-      : setDrinks(await getDrinks(filterRadio, filterText));
+
+    if (pathname.includes('comidas')) {
+      getFoods(filterRadio, filterText)
+        .then((response) => {
+          setFoods(response);
+          if (response.length === 1) {
+            history.push(`/comidas/${response[0].idMeal}`);
+          }
+        });
+    } else {
+      getDrinks(filterRadio, filterText)
+        .then((response) => {
+          setDrinks(response);
+          if (response.length === 1) {
+            history.push(`/bebidas/${response[0].idDrink}`);
+          }
+        });
+    }
   };
 
   return (
