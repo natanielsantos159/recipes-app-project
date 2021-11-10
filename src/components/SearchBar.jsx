@@ -18,6 +18,7 @@ const SearchBar = () => {
   const history = useHistory();
 
   const handleClick = () => {
+    setFetched(false);
     if (filterRadio === 'first-letter' && filterText.length > 1) {
       global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
@@ -25,7 +26,6 @@ const SearchBar = () => {
     if (pathname.includes('comidas')) {
       getFoods(filterRadio, filterText)
         .then((response) => {
-          setFoods(response);
           if (!response) {
             global
               .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
@@ -33,12 +33,12 @@ const SearchBar = () => {
             history.push(`/comidas/${response[0].idMeal}`);
           } else {
             setFetched(true);
+            setFoods(response);
           }
         });
     } else {
       getDrinks(filterRadio, filterText)
         .then((response) => {
-          setDrinks(response);
           if (!response) {
             global
               .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
@@ -46,6 +46,7 @@ const SearchBar = () => {
             history.push(`/bebidas/${response[0].idDrink}`);
           } else {
             setFetched(true);
+            setDrinks(response);
           }
         });
     }
