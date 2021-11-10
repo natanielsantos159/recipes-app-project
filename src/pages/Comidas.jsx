@@ -7,11 +7,11 @@ import AppContext from '../context/AppContext';
 const maxRecipes = 12;
 
 const Comidas = () => {
-  const { foods, louden } = useContext(AppContext);
+  const { foods, Fetched } = useContext(AppContext);
   return (
     <main>
       <Header titlePage="Comidas" />
-      {louden ? foods.slice(0, maxRecipes)
+      {Fetched ? foods.slice(0, maxRecipes)
         .map((food, index) => (
           <Card
             key={ food.idMeal }
