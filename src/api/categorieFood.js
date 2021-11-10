@@ -10,3 +10,9 @@ export const fetchFilterByCategorieFood = async (categorie) => {
   const json = await response.json();
   return json.meals;
 };
+
+export const fetchAllFoods = async () => {
+  const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+  const json = await response.json();
+  return json.meals;
+};

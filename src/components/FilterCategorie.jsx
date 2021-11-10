@@ -1,7 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import { fetchFilterByCategorieDrink, fetchCategorieDrinks } from '../api/categorieDrink';
-import { fetchFilterByCategorieFood, fetchCategorieFood } from '../api/categorieFood';
+import { fetchFilterByCategorieDrink,
+  fetchCategorieDrinks,
+  fetchAllDrinks,
+} from '../api/categorieDrink';
+import { fetchFilterByCategorieFood,
+  fetchCategorieFood,
+  fetchAllFoods } from '../api/categorieFood';
 import AppContext from '../context/AppContext';
 
 const FilterCategorie = () => {
@@ -12,6 +17,7 @@ const FilterCategorie = () => {
     setDrinks,
     setFetched,
     setFoods } = useContext(AppContext);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
     if (pathname === '/comidas') {
@@ -26,14 +32,28 @@ const FilterCategorie = () => {
 
   const handleClick = (categorie) => {
     setFetched(false);
+
     if (pathname === '/comidas') {
-      fetchFilterByCategorieFood(categorie).then(setFoods);
-      setFetched(true);
+      if (categorie === selectedCategory) {
+        fetchAllFoods().then(setFoods);
+        setFetched(true);
+        setSelectedCategory('All');
+      } else {
+        fetchFilterByCategorieFood(categorie).then(setFoods);
+        setFetched(true);
+        setSelectedCategory(categorie);
+      }
     }
     if (pathname === '/bebidas') {
-      console.log(categorie);
-      fetchFilterByCategorieDrink(categorie).then(setDrinks);
-      setFetched(true);
+      if (categorie === selectedCategory) {
+        fetchAllDrinks().then(setDrinks);
+        setFetched(true);
+        setSelectedCategory('All');
+      } else {
+        fetchFilterByCategorieDrink(categorie).then(setDrinks);
+        setFetched(true);
+        setSelectedCategory(categorie);
+      }
     }
   };
 
