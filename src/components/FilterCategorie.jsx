@@ -57,6 +57,18 @@ const FilterCategorie = () => {
     }
   };
 
+  const clickAll = () => {
+    if (pathname === '/comidas') {
+      fetchAllFoods().then(setFoods);
+      setFetched(true);
+      setSelectedCategory('All');
+    } else {
+      fetchAllDrinks().then(setDrinks);
+      setFetched(true);
+      setSelectedCategory('All');
+    }
+  };
+
   return (
     <section>
       {categories.map(({ strCategory }, index) => {
@@ -73,6 +85,13 @@ const FilterCategorie = () => {
           );
         } return null;
       })}
+      <button
+        type="button"
+        data-testid="All-category-filter"
+        onClick={ clickAll }
+      >
+        All
+      </button>
     </section>
   );
 };
