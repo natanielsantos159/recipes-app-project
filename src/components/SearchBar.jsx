@@ -39,7 +39,6 @@ const SearchBar = () => {
     } else {
       getDrinks(filterRadio, filterText)
         .then((response) => {
-          console.log(response);
           if (!response) {
             global
               .alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
@@ -49,7 +48,6 @@ const SearchBar = () => {
             setFetched(true);
             setDrinks(response);
           }
-          console.log(response);
         });
     }
   };
