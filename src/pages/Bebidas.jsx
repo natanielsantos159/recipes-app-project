@@ -6,18 +6,20 @@ import AppContext from '../context/AppContext';
 
 const maxRecipes = 12;
 
+const renderCards = (drink, index) => (
+  <Card
+    key={ drink.idDrink }
+    receitas={ drink }
+    index={ index }
+  />);
+
 const Bebidas = () => {
   const { drinks, Fetched } = useContext(AppContext);
   return (
     <main>
       <Header titlePage="Bebidas" />
-      {Fetched ? drinks.slice(0, maxRecipes)
-        .map((drink, index) => (
-          <Card
-            key={ drink.idDrink }
-            receitas={ drink }
-            index={ index }
-          />)) : ''}
+      {(Fetched && drinks.length > maxRecipes ? drinks.slice(0, maxRecipes)
+        .map(renderCards) : drinks.map(renderCards))}
       <Footer />
     </main>
   );

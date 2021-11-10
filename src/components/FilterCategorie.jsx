@@ -25,6 +25,7 @@ const FilterCategorie = () => {
   const maxButtons = 5;
 
   const handleClick = (categorie) => {
+    setFetched(false);
     if (pathname === '/comidas') {
       fetchFilterByCategorieFood(categorie).then(setFoods);
       setFetched(true);

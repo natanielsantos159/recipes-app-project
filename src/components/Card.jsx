@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 const useRenderCard = ({ receitas, index }) => {
   const { pathname } = useLocation();
-  console.log(index);
   if (pathname === '/comidas') {
     return (
       <div data-testid={ `${index}-recipe-card` }>
