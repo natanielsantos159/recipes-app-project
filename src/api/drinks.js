@@ -19,6 +19,12 @@ const fetchByFirstLetter = async (firstLetter) => {
   return json.drinks;
 };
 
+export const fetchAllDrinks = async () => {
+  const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+  const json = await response.json();
+  return json.drinks;
+};
+
 const getDrinks = (filterRadio, filterText) => {
   switch (filterRadio) {
   case 'ingredient':
