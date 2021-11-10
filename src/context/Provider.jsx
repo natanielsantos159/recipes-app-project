@@ -29,7 +29,7 @@ function Provider({ children }) {
     drinks,
     setDrinks,
     categories,
-    setCategories
+    setCategories,
     louden,
     setLouden,
   };
