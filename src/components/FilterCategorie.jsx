@@ -10,6 +10,7 @@ const FilterCategorie = () => {
     categories,
     setCategories,
     setDrinks,
+    setFetched,
     setFoods } = useContext(AppContext);
 
   useEffect(() => {
@@ -19,17 +20,19 @@ const FilterCategorie = () => {
     if (pathname === '/bebidas') {
       fetchCategorieDrinks().then(setCategories);
     }
-  }, []);
+  }, [pathname, setCategories]);
 
   const maxButtons = 5;
 
   const handleClick = (categorie) => {
     if (pathname === '/comidas') {
       fetchFilterByCategorieFood(categorie).then(setFoods);
+      setFetched(true);
     }
     if (pathname === '/bebidas') {
       console.log(categorie);
       fetchFilterByCategorieDrink(categorie).then(setDrinks);
+      setFetched(true);
     }
   };
 

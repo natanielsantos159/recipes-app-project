@@ -12,7 +12,7 @@ const SearchBar = () => {
     setFilterText,
     setFoods,
     setDrinks,
-    setLouden,
+    setFetched,
   } = useContext(AppContext);
   const { pathname } = useLocation();
   const history = useHistory();
@@ -32,7 +32,7 @@ const SearchBar = () => {
           } else if (response.length === 1) {
             history.push(`/comidas/${response[0].idMeal}`);
           } else {
-            setLouden(true);
+            setFetched(true);
           }
         });
     } else {
@@ -45,7 +45,7 @@ const SearchBar = () => {
           } else if (response.length === 1) {
             history.push(`/bebidas/${response[0].idDrink}`);
           } else {
-            setLouden(true);
+            setFetched(true);
           }
         });
     }
