@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import AppContext from '../context/AppContext';
 
 const Perfil = () => {
-  const { email } = useContext(AppContext);
+  const { email } = JSON.parse(localStorage.getItem('user'));
   return (
     <main>
       <Header titlePage="Perfil" show={ false } />
@@ -22,7 +22,13 @@ const Perfil = () => {
         </button>
       </Link>
       <Link to="/">
-        <button type="button" data-testid="profile-logout-btn">Sair</button>
+        <button
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={ () => localStorage.clear() }
+        >
+          Sair
+        </button>
       </Link>
       <Footer />
     </main>
