@@ -70,29 +70,31 @@ const FilterCategorie = () => {
   };
 
   return (
-    <section>
-      {categories.map(({ strCategory }, index) => {
-        if (index < maxButtons) {
-          return (
-            <button
-              type="button"
-              key={ index }
-              data-testid={ `${strCategory}-category-filter` }
-              onClick={ () => handleClick(strCategory) }
-            >
-              {strCategory}
-            </button>
-          );
-        } return null;
-      })}
-      <button
-        type="button"
-        data-testid="All-category-filter"
-        onClick={ clickAll }
-      >
-        All
-      </button>
-    </section>
+    (pathname === '/comidas' || pathname === '/bebidas')
+      && (
+        <section>
+          <button
+            type="button"
+            data-testid="All-category-filter"
+            onClick={ clickAll }
+          >
+            All
+          </button>
+          {categories.map(({ strCategory }, index) => {
+            if (index < maxButtons) {
+              return (
+                <button
+                  type="button"
+                  key={ index }
+                  data-testid={ `${strCategory}-category-filter` }
+                  onClick={ () => handleClick(strCategory) }
+                >
+                  {strCategory}
+                </button>
+              );
+            } return null;
+          })}
+        </section>)
   );
 };
 
