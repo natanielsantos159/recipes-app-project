@@ -12,6 +12,7 @@ const renderCards = (drink, index) => (
     key={ drink.idDrink }
     receitas={ drink }
     index={ index }
+    dataTest={ `${index}-recipe-card` }
   />);
 
 const Bebidas = () => {

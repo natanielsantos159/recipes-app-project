@@ -42,7 +42,7 @@ const DetalhesComidas = () => {
               <img src={ whiteHeartIcon } alt="Favoritar" />
             </button>
           </div>
-          <h3 data-testid="recipe-description">{ currentMeal.strCategory }</h3>
+          <h3 data-testid="recipe-category">{ currentMeal.strCategory }</h3>
           <ul>
             {
               Object.entries(currentMeal).map(([key, value], i) => {
@@ -70,13 +70,19 @@ const DetalhesComidas = () => {
               title="video"
               width="420"
               height="315"
+              data-testid="video"
               src={ `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` }
             />
           </div>
           {
             drinks.map((drink, i) => {
               if (drinks !== null) {
-                return <Card key={ drink.idDrink } receitas={ drink } index={ i } />;
+                return (<Card
+                  dataTest={ `${i}-recomendation-card` }
+                  key={ drink.idDrink }
+                  receitas={ drink }
+                  index={ i }
+                />);
               }
               return null;
             })

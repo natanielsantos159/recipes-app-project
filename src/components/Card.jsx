@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const useRenderCard = ({ receitas, index }) => {
+const useRenderCard = ({ receitas, index, dataTest }) => {
   const { pathname } = useLocation();
   if (pathname === '/comidas') {
     return (
       <Link to={ `/comidas/${receitas.idMeal}` }>
-        <div data-testid={ `${index}-recipe-card` }>
+        <div data-testid={ dataTest }>
           <img
             src={ receitas.strMealThumb }
             alt={ receitas.strMeal }
@@ -19,7 +19,7 @@ const useRenderCard = ({ receitas, index }) => {
   }
   return (
     <Link to={ `/bebidas/${receitas.idDrink}` }>
-      <div data-testid={ `${index}-recipe-card` }>
+      <div data-testid={ dataTest }>
         <img
           src={ receitas.strDrinkThumb }
           alt={ receitas.strDrink }
