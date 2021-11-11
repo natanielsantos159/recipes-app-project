@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import AppContext from '../context/AppContext';
 
 const Perfil = () => {
   const { email } = JSON.parse(localStorage.getItem('user'));
