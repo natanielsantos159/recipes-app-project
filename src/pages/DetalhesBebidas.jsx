@@ -1,5 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router';
 
-const detalhesBebidas = () => (<h1>Bebidas</h1>);
+const DetalhesBebidas = () => {
+  const { id } = useParams();
+  console.log(id);
 
-export default detalhesBebidas;
+  return (
+    <div>
+      <h1>{id}</h1>
+    </div>
+  );
+};
+
+export default DetalhesBebidas;

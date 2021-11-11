@@ -4,8 +4,8 @@ import './App.css';
 import Provider from './context/Provider';
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
-import detalhesBebidas from './pages/DetalhesBebidas';
-import detalhesComidas from './pages/DetalhesComidas';
+import DetalhesBebidas from './pages/DetalhesBebidas';
+import DetalhesComidas from './pages/DetalhesComidas';
 import Explorar from './pages/Explorar';
 import explorarBebidas from './pages/ExplorarBebidas';
 import explorarComidas from './pages/ExplorarComidas';
@@ -25,10 +25,10 @@ function App() {
         <Provider>
           <Switch>
             <Route exact path="/" component={ Login } />
-            <Route path="/comidas/:id-da-receita/in-progress" component={ Bebidas } />
-            <Route path="/bebidas/:id-da-bebida/in-progress" component={ Bebidas } />
-            <Route path="/comidas/:id-da-receita" component={ detalhesComidas } />
-            <Route path="/bebidas/:id-da-bebida" component={ detalhesBebidas } />
+            <Route path="/comidas/:id/in-progress" component={ Bebidas } />
+            <Route path="/bebidas/:id/in-progress" component={ Bebidas } />
+            <Route path="/comidas/:id" component={ DetalhesComidas } />
+            <Route path="/bebidas/:id" component={ DetalhesBebidas } />
             <Route exact path="/comidas" component={ Comidas } />
             <Route exact path="/bebidas" component={ Bebidas } />
             <Route path="/explorar/comidas/area" component={ explorarOrigem } />
