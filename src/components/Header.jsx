@@ -5,7 +5,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import FilterCategorie from './FilterCategorie';
 import SearchBar from './SearchBar';
-import './Styles/Header.css';
+import '../Styles/Header.css';
 
 const Header = ({ titlePage, show }) => {
   const [visible, setVisible] = useState(false);
