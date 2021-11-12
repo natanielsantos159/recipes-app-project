@@ -25,28 +25,30 @@ function Login() {
 
   return (
     <main>
-      <input
-        type="email"
-        data-testid="email-input"
-        placeholder="E-mail"
-        value={ email }
-        onChange={ ({ target }) => setEmail(target.value) }
-      />
-      <input
-        type="password"
-        data-testid="password-input"
-        placeholder="Password"
-        value={ password }
-        onChange={ ({ target }) => setPassword(target.value) }
-      />
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ validateButton() }
-        onClick={ handleClick }
-      >
-        Entrar
-      </button>
+      <form>
+        <input
+          type="email"
+          data-testid="email-input"
+          placeholder="E-mail"
+          value={ email }
+          onChange={ ({ target }) => setEmail(target.value) }
+        />
+        <input
+          type="password"
+          data-testid="password-input"
+          placeholder="Password"
+          value={ password }
+          onChange={ ({ target }) => setPassword(target.value) }
+        />
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ validateButton() }
+          onClick={ handleClick }
+        >
+          Entrar
+        </button>
+      </form>
     </main>
   );
 }

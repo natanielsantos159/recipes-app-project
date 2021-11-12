@@ -20,7 +20,7 @@ const Bebidas = () => {
   useEffect(() => {
     fetchAllDrinks().then((response) => setDrinks(response));
     setFetched(true);
-  }, []);
+  }, [setDrinks, setFetched]);
 
   return (
     <main>

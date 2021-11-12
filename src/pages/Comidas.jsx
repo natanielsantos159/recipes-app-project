@@ -20,7 +20,7 @@ const Comidas = () => {
   useEffect(() => {
     fetchAllFoods().then((response) => setFoods(response));
     setFetched(true);
-  }, []);
+  }, [setFetched, setFoods]);
 
   return (
     <main>

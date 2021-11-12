@@ -17,15 +17,16 @@ const DetalhesComidas = () => {
   useEffect(() => {
     fetchMealsById(id).then(setRecipeDetail);
     fetchAllDrinks().then(setDrinks);
-  }, []);
+  }, [setRecipeDetail, setDrinks, id]);
 
   const currentMeal = recipeDetail[0];
-  console.log(currentMeal);
-
   const renderDetails = () => {
     const magicNumber = 32;
 
     if (currentMeal) {
+      const filterIngredients = Object.entries(currentMeal)
+        .filter(([key, value]) => key.includes('strIngredient') && value !== '');
+      
       return (
         <div>
           <img
@@ -44,22 +45,13 @@ const DetalhesComidas = () => {
           </div>
           <h3 data-testid="recipe-category">{ currentMeal.strCategory }</h3>
           <ul>
-            {
-              Object.entries(currentMeal).map(([key, value], i) => {
-                if (key.includes('strIngredient') && value !== '') {
-                  return (
-                    <li
-                      key={ key }
-                      data-testid={ `${i}-ingredient-name-and-measure` }
-                    >
-                      { value }
-                    </li>
-                  );
-                }
-
-                return null;
-              })
-            }
+            {filterIngredients.map(([key, value], i) => (
+              <li
+                data-testid={ `${i}-ingredient-name-and-measure` }
+                key={ key }
+              >
+                {value}
+              </li>))}
           </ul>
           <div data-testid="instructions">
             <h4>Instruções de preparo:</h4>
