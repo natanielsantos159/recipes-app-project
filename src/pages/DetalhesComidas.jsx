@@ -26,7 +26,7 @@ const DetalhesComidas = () => {
     if (currentMeal) {
       const filterIngredients = Object.entries(currentMeal)
         .filter(([key, value]) => key.includes('strIngredient') && value !== '');
-      
+
       return (
         <div>
           <img

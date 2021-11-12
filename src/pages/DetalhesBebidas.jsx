@@ -8,8 +8,6 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
 
-import Card from '../components/Card';
-
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, foods, setFoods } = useContext(AppContext);
   const { id } = useParams();
@@ -17,7 +15,7 @@ const DetalhesComidas = () => {
   useEffect(() => {
     fetchDrinksById(id).then(setRecipeDetail);
     fetchAllFoods().then(setFoods);
-  }, []);
+  }, [setFoods, setRecipeDetail, id]);
 
   const currentDrinks = recipeDetail[0];
 
