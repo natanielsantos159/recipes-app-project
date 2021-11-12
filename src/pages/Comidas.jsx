@@ -19,6 +19,7 @@ const Comidas = () => {
   useEffect(() => {
     fetchAllFoods().then((response) => setFoods(response));
     setFetched(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
