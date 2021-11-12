@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Styles/Footer.css';
+import '../Styles/Footer.css';
 // import { Link } from 'react-router-dom';
 
 import exploreIcon from '../images/exploreIcon.svg';
