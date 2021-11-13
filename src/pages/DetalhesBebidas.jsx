@@ -57,7 +57,7 @@ const DetalhesComidas = () => {
             foods.map((food, i) => {
               if (foods !== null) {
                 return (
-                  <Link to={ `/comidas/${food.idMeal}` }>
+                  <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
                     <div data-testid={ `${i}-recomendation-card` }>
                       <img
                         src={ food.strMealThumb }

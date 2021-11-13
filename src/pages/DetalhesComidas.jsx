@@ -57,7 +57,7 @@ const DetalhesComidas = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentMeal.strInstructions }</p>
           </div>
-          <div>
+          <div key={ currentMeal.idMeal }>
             <iframe
               title="video"
               width="420"

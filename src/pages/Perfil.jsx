@@ -5,7 +5,11 @@ import Header from '../components/Header';
 import '../Styles/Perfil.css';
 
 const Perfil = () => {
+  if (JSON.parse(localStorage.getItem('user') === null)) {
+    localStorage.setItem('user', JSON.stringify({ email: 'a' }));
+  }
   const { email } = JSON.parse(localStorage.getItem('user'));
+
   return (
     <main>
       <Header titlePage="Perfil" show={ false } />

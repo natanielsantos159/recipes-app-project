@@ -12,7 +12,7 @@ const Header = ({ titlePage, show }) => {
   return (
     <header>
       <section className="icons-header">
-        <Link className="link-icon" to="/perfil">
+        <Link to="/perfil" className="link-icon">
           <img src={ profileIcon } data-testid="profile-top-btn" alt="profile-icon" />
         </Link>
         <h1 id="page-title" data-testid="page-title">{titlePage}</h1>
