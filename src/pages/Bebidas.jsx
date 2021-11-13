@@ -12,6 +12,7 @@ const renderCards = (drink, index) => (
     key={ drink.idDrink }
     receitas={ drink }
     index={ index }
+    dataTest={ `${index}-recipe-card` }
   />);
 
 const Bebidas = () => {
@@ -19,7 +20,7 @@ const Bebidas = () => {
   useEffect(() => {
     fetchAllDrinks().then((response) => setDrinks(response));
     setFetched(true);
-  }, []);
+  }, [setDrinks, setFetched]);
 
   return (
     <main>
