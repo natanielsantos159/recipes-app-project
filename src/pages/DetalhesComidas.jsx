@@ -57,13 +57,13 @@ const DetalhesComidas = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentMeal.strInstructions }</p>
           </div>
-          <div>
+          <div key={ currentMeal.idMeal }>
             <iframe
               title="video"
               width="420"
               height="315"
               data-testid="video"
-              src={ `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` }
+              src={ currentMeal.strYoutube ? `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` : '' }
             />
           </div>
           {

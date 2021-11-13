@@ -11,6 +11,7 @@ import explorarBebidas from './pages/ExplorarBebidas';
 import explorarComidas from './pages/ExplorarComidas';
 import explorarIngredientes from './pages/ExplorarIngredientes';
 import explorarOrigem from './pages/ExplorarOrigem';
+import inProgress from './pages/InProgress';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitaFeitas';
@@ -25,8 +26,8 @@ function App() {
         <Provider>
           <Switch>
             <Route exact path="/" component={ Login } />
-            <Route path="/comidas/:id/in-progress" component={ Bebidas } />
-            <Route path="/bebidas/:id/in-progress" component={ Bebidas } />
+            <Route path="/comidas/:id/in-progress" component={ inProgress } />
+            <Route path="/bebidas/:id/in-progress" component={ inProgress } />
             <Route path="/comidas/:id" component={ DetalhesComidas } />
             <Route path="/bebidas/:id" component={ DetalhesBebidas } />
             <Route exact path="/comidas" component={ Comidas } />
