@@ -25,6 +25,12 @@ export const fetchAllFoods = async () => {
   return json.meals;
 };
 
+export const fetchRandomFood = async () => {
+  const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  const json = await response.json();
+  return json.meals;
+};
+
 export const fetchMealsById = async (id) => {
   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
   const json = await response.json();
