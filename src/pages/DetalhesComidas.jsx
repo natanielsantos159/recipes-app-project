@@ -25,7 +25,8 @@ const DetalhesComidas = () => {
 
     if (currentMeal) {
       const filterIngredients = Object.entries(currentMeal)
-        .filter(([key, value]) => key.includes('strIngredient') && value !== '');
+        .filter(([key, value]) => key.includes('strIngredient')
+        && (value !== '') && (value !== null));
 
       return (
         <div>
