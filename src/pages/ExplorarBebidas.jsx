@@ -7,7 +7,6 @@ import AppContext from '../context/AppContext';
 
 const useExplorarBebidas = () => {
   const { recipeDetail, setRecipeDetail } = useContext(AppContext);
-  console.log(recipeDetail);
 
   useEffect(() => {
     fetchRandomDrink().then((res) => fetchDrinksById(res[0].idDrink))

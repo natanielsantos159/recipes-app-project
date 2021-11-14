@@ -1,21 +1,18 @@
 const fetchByIngredient = async (ingredient) => {
   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const json = await response.json();
-  console.log(json.meals);
   return json.meals;
 };
 
 const fetchByName = async (name) => {
   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
   const json = await response.json();
-  console.log(json.meals);
   return json.meals;
 };
 
 const fetchByFirstLetter = async (firstLetter) => {
   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
   const json = await response.json();
-  console.log(json.meals);
   return json.meals;
 };
 
@@ -33,6 +30,12 @@ export const fetchRandomFood = async () => {
 
 export const fetchMealsById = async (id) => {
   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const json = await response.json();
+  return json.meals;
+};
+
+export const fetchMealsIngredients = async () => {
+  const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
   const json = await response.json();
   return json.meals;
 };

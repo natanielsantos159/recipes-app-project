@@ -10,6 +10,7 @@ function Provider({ children }) {
   const [filterText, setFilterText] = useState('');
   const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const [categories, setCategories] = useState([]);
   const [Fetched, setFetched] = useState(false);
   const [recipeDetail, setRecipeDetail] = useState([]);
@@ -35,6 +36,8 @@ function Provider({ children }) {
     setFetched,
     recipeDetail,
     setRecipeDetail,
+    ingredients,
+    setIngredients,
   };
 
   return (
