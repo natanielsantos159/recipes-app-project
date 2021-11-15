@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitaFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+import notFound from './components/notFound';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,6 +35,7 @@ function App() {
             <Route exact path="/comidas" component={ Comidas } />
             <Route exact path="/bebidas" component={ Bebidas } />
             <Route path="/explorar/comidas/area" component={ explorarOrigem } />
+            <Route path="/explorar/bebidas/area" component={ notFound } />
             <Route
               path="/explorar/comidas/ingredientes"
               component={ explorarIngredientesComidas }

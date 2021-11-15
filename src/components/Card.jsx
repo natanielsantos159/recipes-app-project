@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const useRenderCard = ({ receitas, index, dataTest }) => {
   const { pathname } = useLocation();
-  if (pathname === '/comidas') {
+  if ((pathname === '/comidas') || (pathname === '/explorar/comidas/area')) {
     return (
       <Link to={ `/comidas/${receitas.idMeal}` }>
         <div data-testid={ dataTest }>

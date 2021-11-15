@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { fetchAllFoods, fetchMealsArea } from '../api/meals';
+import getFoods, { fetchAllFoods, fetchMealsArea } from '../api/meals';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import AppContext from '../context/AppContext';
@@ -15,8 +15,20 @@ const useExplorarOrigem = () => {
 
   const max = 12;
 
+  const handleChange = ({ target }) => {
+    if (target.value !== 'All') {
+      getFoods('name', target.value).then(setFoods);
+    } else {
+      fetchAllFoods().then(setFoods);
+    }
+  };
+
   const options = (currentArea) => (
-    <option data-testid={ `${currentArea.strArea}-option` } value={ currentArea.strArea }>
+    <option
+      key={ currentArea.strArea }
+      data-testid={ `${currentArea.strArea}-option` }
+      value={ currentArea.strArea }
+    >
       { currentArea.strArea }
     </option>
   );
@@ -27,11 +39,16 @@ const useExplorarOrigem = () => {
   return (
     <main>
       <Header titlePage="Explorar Origem" />
-      <select data-testid="explore-by-area-dropdown">
-        <option data-testid="All-option" value="All">All</option>
+      <select data-testid="explore-by-area-dropdown" onChange={ handleChange }>
+        <option
+          data-testid="All-option"
+          value="All"
+        >
+          All
+        </option>
         {area.map(options)}
       </select>
-      {mainFoods}
+      {foods && mainFoods }
       <Footer />
     </main>
   );
