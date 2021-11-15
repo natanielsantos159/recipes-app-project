@@ -9,7 +9,8 @@ import DetalhesComidas from './pages/DetalhesComidas';
 import Explorar from './pages/Explorar';
 import explorarBebidas from './pages/ExplorarBebidas';
 import explorarComidas from './pages/ExplorarComidas';
-import explorarIngredientes from './pages/ExplorarIngredientes';
+import ExplorarIngredientesBebidas from './pages/ExplorarIngredientesBebidas';
+import explorarIngredientesComidas from './pages/ExplorarIngredientesComidas';
 import explorarOrigem from './pages/ExplorarOrigem';
 import inProgress from './pages/InProgress';
 import Login from './pages/Login';
@@ -35,11 +36,11 @@ function App() {
             <Route path="/explorar/comidas/area" component={ explorarOrigem } />
             <Route
               path="/explorar/comidas/ingredientes"
-              component={ explorarIngredientes }
+              component={ explorarIngredientesComidas }
             />
             <Route
               path="/explorar/bebidas/ingredientes"
-              component={ explorarIngredientes }
+              component={ ExplorarIngredientesBebidas }
             />
             <Route path="/explorar/comidas" component={ explorarComidas } />
             <Route path="/explorar/bebidas" component={ explorarBebidas } />

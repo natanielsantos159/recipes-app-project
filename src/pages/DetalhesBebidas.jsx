@@ -22,7 +22,8 @@ const DetalhesComidas = () => {
   const renderDetails = () => {
     if (currentDrinks) {
       const filterIngredients = Object.entries(currentDrinks)
-        .filter(([key, value]) => key.includes('strIngredient') && value !== null);
+        .filter(([key, value]) => key.includes('strIngredient')
+        && (value !== '') && (value !== null));
       return (
         <div>
           <img
@@ -53,6 +54,12 @@ const DetalhesComidas = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentDrinks.strInstructions }</p>
           </div>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            Iniciar Receita
+          </button>
           {
             foods.map((food, i) => {
               if (foods !== null) {
@@ -72,13 +79,6 @@ const DetalhesComidas = () => {
               return null;
             })
           }
-
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
         </div>
       );
     }

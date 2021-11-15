@@ -16,17 +16,23 @@ const renderCards = (food, index) => (
   />);
 
 const Comidas = () => {
-  const { foods, Fetched, setFoods, setFetched } = useContext(AppContext);
+  const { foods, Fetched, setFoods, setFetched, exploredFoods } = useContext(AppContext);
   useEffect(() => {
     fetchAllFoods().then((response) => setFoods(response));
     setFetched(true);
   }, [setFetched, setFoods]);
 
+  const mainFoods = (Fetched && foods.length > maxRecipes ? foods.slice(0, maxRecipes)
+    .map(renderCards) : foods.map(renderCards));
+
+  const mainExplored = (Fetched && foods.length > maxRecipes
+    ? exploredFoods.slice(0, maxRecipes)
+      .map(renderCards) : exploredFoods.map(renderCards));
+
   return (
     <main>
       <Header titlePage="Comidas" />
-      {(Fetched && foods.length > maxRecipes ? foods.slice(0, maxRecipes)
-        .map(renderCards) : foods.map(renderCards))}
+      {exploredFoods.length > 0 ? mainExplored : mainFoods}
       <Footer />
     </main>
   );

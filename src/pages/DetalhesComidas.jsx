@@ -25,7 +25,8 @@ const DetalhesComidas = () => {
 
     if (currentMeal) {
       const filterIngredients = Object.entries(currentMeal)
-        .filter(([key, value]) => key.includes('strIngredient') && value !== '');
+        .filter(([key, value]) => key.includes('strIngredient')
+        && (value !== '') && (value !== null));
 
       return (
         <div>
@@ -66,6 +67,12 @@ const DetalhesComidas = () => {
               src={ currentMeal.strYoutube ? `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` : '' }
             />
           </div>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            Iniciar Receita
+          </button>
           {
             drinks.map((drink, i) => {
               if (drinks !== null) {
@@ -79,13 +86,6 @@ const DetalhesComidas = () => {
               return null;
             })
           }
-
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
         </div>
       );
     }
