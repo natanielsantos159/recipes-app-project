@@ -1,0 +1,36 @@
+.recomendation-container {
+  display: flex;
+  height: 170px;
+  overflow-x: scroll;
+  width: 345px;
+}
+
+.recomendation {
+  min-width: 44%;
+}
+
+.image-details {
+  align-self: center;
+  width: 80%;
+}
+
+
+.details-container {
+  background-color: rgb(242, 240, 201);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.instructions {
+  background-color: rgb(242, 240, 201);
+  color: rgb(89, 70, 46);
+}
+
+.category-details {
+  color: #a69888;
+}
+
+.title-details {
+  padding-bottom: -10px;
+}

@@ -1,5 +1,21 @@
+#page-title {
+  color: black;
+}
+
 .App {
+  background-color: rgb(242, 240, 201);
+  color: rgb(89, 70, 46);
   height: 640px;
   margin: auto;
   width: 360px;
+}
+
+button {
+  background-color: rgb(161, 166, 10);
+  border-style: none;
+  color: whitesmoke;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 5px;
+  padding: 5px;
 }

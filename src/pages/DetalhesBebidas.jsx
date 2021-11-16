@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchAllFoods } from '../api/meals';
 import { fetchDrinksById } from '../api/drinks';
-
+import '../Styles/Detalhes.css';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
@@ -36,22 +36,33 @@ const DetalhesComidas = () => {
           return acc;
         }, []);
       return (
-        <div>
+        <section className="details-container">
           <img
             src={ currentDrinks.strDrinkThumb }
             alt={ currentDrinks.strDrink }
             data-testid="recipe-photo"
+            className="image-details"
           />
-          <h2 data-testid="recipe-title">{ currentDrinks.strDrink }</h2>
-          <h3 data-testid="recipe-category">{currentDrinks.strAlcoholic}</h3>
-          <div>
+          <h2
+            className="title-details"
+            data-testid="recipe-title"
+          >
+            { currentDrinks.strDrink }
+          </h2>
+          <h3
+            data-testid="recipe-category"
+            className="category-details"
+          >
+            {currentDrinks.strAlcoholic}
+          </h3>
+          <section className="">
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
             </button>
             <button type="button" data-testid="favorite-btn">
               <img src={ whiteHeartIcon } alt="Favoritar" />
             </button>
-          </div>
+          </section>
           <h3 data-testid="recipe-category">{ currentDrinks.strCategory }</h3>
           <ul>
             {filterIngredients.map(([key, value], i) => (
@@ -62,36 +73,55 @@ const DetalhesComidas = () => {
                 {`${filterMeasure[i]} ${value}`}
               </li>))}
           </ul>
-          <div data-testid="instructions">
+          <section
+            className="instructions"
+            data-testid="instructions"
+          >
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentDrinks.strInstructions }</p>
-          </div>
+          </section>
           <button
             type="button"
             data-testid="start-recipe-btn"
           >
             Iniciar Receita
           </button>
-          {
-            foods.map((food, i) => {
-              if (foods !== null) {
-                return (
-                  <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
-                    <div data-testid={ `${i}-recomendation-card` }>
-                      <img
-                        src={ food.strMealThumb }
-                        alt={ food.strMeal }
-                        data-testid={ `${i}-card-img` }
-                      />
-                      <h3 data-testid={ `${i}-card-name` }>{ food.strMeal }</h3>
-                    </div>
-                  </Link>
-                );
-              }
-              return null;
-            })
-          }
-        </div>
+          <section className="recomendation-container">
+            {
+              foods.map((food, i) => {
+                if (foods !== null) {
+                  return (
+                    <Link
+                      className="link-card recomendation"
+                      to={ `/comidas/${food.idMeal}` }
+                      key={ food.idMeal }
+                    >
+                      <div
+                        className="card"
+                        data-testid={ `${i}-recomendation-card` }
+                      >
+                        <img
+                          src={ food.strMealThumb }
+                          alt={ food.strMeal }
+                          data-testid={ `${i}-card-img` }
+                          className="image-card "
+                        />
+                        <h3
+                          className="card-title "
+                          data-testid={ `${i}-card-name` }
+                        >
+                          { food.strMeal }
+
+                        </h3>
+                      </div>
+                    </Link>
+                  );
+                }
+                return null;
+              })
+            }
+          </section>
+        </section>
       );
     }
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchMealsById } from '../api/meals';
 import { fetchAllDrinks } from '../api/drinks';
 
@@ -8,7 +8,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
 
-import Card from '../components/Card';
+import '../Styles/Detalhes.css';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
@@ -84,19 +84,40 @@ const DetalhesComidas = () => {
           >
             Iniciar Receita
           </button>
-          {
-            drinks.map((drink, i) => {
-              if (drinks !== null) {
-                return (<Card
-                  dataTest={ `${i}-recomendation-card` }
-                  key={ drink.idDrink }
-                  receitas={ drink }
-                  index={ i }
-                />);
-              }
-              return null;
-            })
-          }
+          <section className="recomendation-container">
+            {
+              drinks.map((drink, i) => {
+                if (drinks !== null) {
+                  return (
+                    <Link
+                      className="link-card recomendation"
+                      to={ `/bebidas/${drink.idDrink}` }
+                      key={ drink.idDrink }
+                    >
+                      <div
+                        className="card"
+                        data-testid={ `${i}-recomendation-card` }
+                      >
+                        <img
+                          src={ drink.strDrinkThumb }
+                          alt={ drink.strDrink }
+                          data-testid={ `${i}-card-img` }
+                          className="image-card "
+                        />
+                        <h3
+                          className="card-title "
+                          data-testid={ `${i}-card-name` }
+                        >
+                          { drink.strDrink }
+
+                        </h3>
+                      </div>
+                    </Link>);
+                }
+                return null;
+              })
+            }
+          </section>
         </div>
       );
     }

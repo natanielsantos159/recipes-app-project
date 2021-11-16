@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { fetchAllDrinks } from '../api/drinks';
 import AppContext from '../context/AppContext';
+import '../Styles/Card.css';
 
 const maxRecipes = 12;
 
@@ -33,7 +34,9 @@ const Bebidas = () => {
   return (
     <main>
       <Header titlePage="Bebidas" />
-      {exploredDrinks.length > 0 ? mainExplored : mainDrinks}
+      <section className="main-cards-container">
+        {exploredDrinks.length > 0 ? mainExplored : mainDrinks}
+      </section>
       <Footer />
     </main>
   );
