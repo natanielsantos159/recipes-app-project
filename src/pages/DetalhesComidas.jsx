@@ -10,6 +10,8 @@ import AppContext from '../context/AppContext';
 
 import '../Styles/Detalhes.css';
 
+const maxRecomedantion = 6;
+
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
   const { id } = useParams();
@@ -40,22 +42,33 @@ const DetalhesComidas = () => {
         }, []);
 
       return (
-        <div>
+        <section className="details-container">
           <img
             src={ currentMeal.strMealThumb }
             alt={ currentMeal.strMeal }
             data-testid="recipe-photo"
+            className="image-details"
           />
-          <h2 data-testid="recipe-title">{ currentMeal.strMeal }</h2>
-          <div>
+          <h2
+            className="title-details"
+            data-testid="recipe-title"
+          >
+            { currentMeal.strMeal }
+          </h2>
+          <h3
+            data-testid="recipe-category"
+            className="category-details"
+          >
+            { currentMeal.strCategory }
+          </h3>
+          <section>
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
             </button>
             <button type="button" data-testid="favorite-btn">
               <img src={ whiteHeartIcon } alt="Favoritar" />
             </button>
-          </div>
-          <h3 data-testid="recipe-category">{ currentMeal.strCategory }</h3>
+          </section>
           <ul>
             {filterIngredients.map(([key, value], i) => (
               <li
@@ -87,7 +100,7 @@ const DetalhesComidas = () => {
           <section className="recomendation-container">
             {
               drinks.map((drink, i) => {
-                if (drinks !== null) {
+                if (drinks !== null && i < maxRecomedantion) {
                   return (
                     <Link
                       className="link-card recomendation"
@@ -106,7 +119,7 @@ const DetalhesComidas = () => {
                         />
                         <h3
                           className="card-title "
-                          data-testid={ `${i}-card-name` }
+                          data-testid={ `${i}-recomendation-title` }
                         >
                           { drink.strDrink }
 
@@ -118,7 +131,7 @@ const DetalhesComidas = () => {
               })
             }
           </section>
-        </div>
+        </section>
       );
     }
 

@@ -8,6 +8,8 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
 
+const maxRecomedantion = 6;
+
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, foods, setFoods } = useContext(AppContext);
   const { id } = useParams();
@@ -55,7 +57,13 @@ const DetalhesComidas = () => {
           >
             {currentDrinks.strAlcoholic}
           </h3>
-          <section className="">
+          <h4
+            data-testid="recipe-category"
+            className="category-details"
+          >
+            { currentDrinks.strCategory }
+          </h4>
+          <section>
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
             </button>
@@ -63,7 +71,6 @@ const DetalhesComidas = () => {
               <img src={ whiteHeartIcon } alt="Favoritar" />
             </button>
           </section>
-          <h3 data-testid="recipe-category">{ currentDrinks.strCategory }</h3>
           <ul>
             {filterIngredients.map(([key, value], i) => (
               <li
@@ -89,7 +96,7 @@ const DetalhesComidas = () => {
           <section className="recomendation-container">
             {
               foods.map((food, i) => {
-                if (foods !== null) {
+                if (foods !== null && i < maxRecomedantion) {
                   return (
                     <Link
                       className="link-card recomendation"
@@ -108,7 +115,7 @@ const DetalhesComidas = () => {
                         />
                         <h3
                           className="card-title "
-                          data-testid={ `${i}-card-name` }
+                          data-testid={ `${i}-recomendation-title` }
                         >
                           { food.strMeal }
 
