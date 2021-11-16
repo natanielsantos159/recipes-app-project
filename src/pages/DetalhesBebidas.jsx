@@ -24,6 +24,17 @@ const DetalhesComidas = () => {
       const filterIngredients = Object.entries(currentDrinks)
         .filter(([key, value]) => key.includes('strIngredient')
         && (value !== '') && (value !== null));
+      const filterMeasure = Object.entries(currentDrinks)
+        .reduce((acc, [key, value]) => {
+          if (key.includes('strMeasure')) {
+            if (value === null) {
+              acc.push('');
+            } else {
+              acc.push(value);
+            }
+          }
+          return acc;
+        }, []);
       return (
         <div>
           <img
@@ -32,6 +43,7 @@ const DetalhesComidas = () => {
             data-testid="recipe-photo"
           />
           <h2 data-testid="recipe-title">{ currentDrinks.strDrink }</h2>
+          <h3 data-testid="recipe-category">{currentDrinks.strAlcoholic}</h3>
           <div>
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
@@ -47,7 +59,7 @@ const DetalhesComidas = () => {
                 data-testid={ `${i}-ingredient-name-and-measure` }
                 key={ key }
               >
-                {value}
+                {`${filterMeasure[i]} ${value}`}
               </li>))}
           </ul>
           <div data-testid="instructions">

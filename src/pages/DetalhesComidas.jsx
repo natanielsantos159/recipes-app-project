@@ -27,6 +27,17 @@ const DetalhesComidas = () => {
       const filterIngredients = Object.entries(currentMeal)
         .filter(([key, value]) => key.includes('strIngredient')
         && (value !== '') && (value !== null));
+      const filterMeasure = Object.entries(currentMeal)
+        .reduce((acc, [key, value]) => {
+          if (key.includes('strMeasure')) {
+            if (value === null) {
+              acc.push('');
+            } else {
+              acc.push(value);
+            }
+          }
+          return acc;
+        }, []);
 
       return (
         <div>
@@ -51,7 +62,7 @@ const DetalhesComidas = () => {
                 data-testid={ `${i}-ingredient-name-and-measure` }
                 key={ key }
               >
-                {value}
+                {`${filterMeasure[i]} ${value}`}
               </li>))}
           </ul>
           <div data-testid="instructions">
