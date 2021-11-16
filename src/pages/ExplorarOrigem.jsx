@@ -17,7 +17,7 @@ const useExplorarOrigem = () => {
 
   const handleChange = ({ target }) => {
     if (target.value !== 'All') {
-      getFoods('name', target.value).then(setFoods);
+      getFoods('area', target.value).then(setFoods);
     } else {
       fetchAllFoods().then(setFoods);
     }
@@ -48,7 +48,7 @@ const useExplorarOrigem = () => {
         </option>
         {area.map(options)}
       </select>
-      {foods && mainFoods }
+      {mainFoods}
       <Footer />
     </main>
   );

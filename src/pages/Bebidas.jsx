@@ -18,22 +18,23 @@ const renderCards = (drink, index) => (
 const Bebidas = () => {
   const { drinks, Fetched, setDrinks,
     setFetched, exploredDrinks } = useContext(AppContext);
+
   useEffect(() => {
     fetchAllDrinks().then((response) => setDrinks(response));
     setFetched(true);
-  }, [setDrinks, setFetched]);
+  }, [setFetched, setDrinks]);
 
   const mainDrinks = (Fetched && drinks.length > maxRecipes ? drinks.slice(0, maxRecipes)
     .map(renderCards) : drinks.map(renderCards));
 
-  const mainExplored = (Fetched && drinks.length > maxRecipes
+  const mainExplored = (Fetched && exploredDrinks.length > maxRecipes
     ? exploredDrinks.slice(0, maxRecipes)
       .map(renderCards) : exploredDrinks.map(renderCards));
 
   return (
     <main>
       <Header titlePage="Bebidas" />
-      {exploredDrinks.length > 0 ? mainExplored : mainDrinks}
+      {exploredDrinks.length > 0 ? mainExplored : mainDrinks }
       <Footer />
     </main>
   );
