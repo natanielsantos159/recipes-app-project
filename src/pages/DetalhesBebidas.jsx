@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchAllFoods } from '../api/meals';
 import { fetchDrinksById } from '../api/drinks';
 import '../Styles/Detalhes.css';
@@ -7,8 +7,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
-
-const maxRecomedantion = 6;
+import RecomendationCard from '../components/RecomendationCard';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, foods, setFoods } = useContext(AppContext);
@@ -95,37 +94,13 @@ const DetalhesComidas = () => {
           </button>
           <section className="recomendation-container">
             {
-              foods.map((food, i) => {
-                if (foods !== null && i < maxRecomedantion) {
-                  return (
-                    <Link
-                      className="link-card recomendation"
-                      to={ `/comidas/${food.idMeal}` }
-                      key={ food.idMeal }
-                    >
-                      <div
-                        className="card"
-                        data-testid={ `${i}-recomendation-card` }
-                      >
-                        <img
-                          src={ food.strMealThumb }
-                          alt={ food.strMeal }
-                          data-testid={ `${i}-card-img` }
-                          className="image-card "
-                        />
-                        <h3
-                          className="card-title "
-                          data-testid={ `${i}-recomendation-title` }
-                        >
-                          { food.strMeal }
-
-                        </h3>
-                      </div>
-                    </Link>
-                  );
-                }
-                return null;
-              })
+              foods.map((food, i) => (
+                <RecomendationCard
+                  obj={ food }
+                  i={ i }
+                  key={ i }
+                />
+              ))
             }
           </section>
         </section>

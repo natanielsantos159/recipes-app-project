@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchMealsById } from '../api/meals';
 import { fetchAllDrinks } from '../api/drinks';
 
@@ -9,8 +9,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import AppContext from '../context/AppContext';
 
 import '../Styles/Detalhes.css';
-
-const maxRecomedantion = 6;
+import RecomendationCard from '../components/RecomendationCard';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
@@ -99,36 +98,13 @@ const DetalhesComidas = () => {
           </button>
           <section className="recomendation-container">
             {
-              drinks.map((drink, i) => {
-                if (drinks !== null && i < maxRecomedantion) {
-                  return (
-                    <Link
-                      className="link-card recomendation"
-                      to={ `/bebidas/${drink.idDrink}` }
-                      key={ drink.idDrink }
-                    >
-                      <div
-                        className="card"
-                        data-testid={ `${i}-recomendation-card` }
-                      >
-                        <img
-                          src={ drink.strDrinkThumb }
-                          alt={ drink.strDrink }
-                          data-testid={ `${i}-card-img` }
-                          className="image-card "
-                        />
-                        <h3
-                          className="card-title "
-                          data-testid={ `${i}-recomendation-title` }
-                        >
-                          { drink.strDrink }
-
-                        </h3>
-                      </div>
-                    </Link>);
-                }
-                return null;
-              })
+              drinks.map((drink, i) => (
+                <RecomendationCard
+                  obj={ drink }
+                  i={ i }
+                  key={ i }
+                />
+              ))
             }
           </section>
         </section>
