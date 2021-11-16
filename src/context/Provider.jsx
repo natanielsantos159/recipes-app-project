@@ -10,6 +10,7 @@ function Provider({ children }) {
   const [filterText, setFilterText] = useState('');
   const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [filterByArea, setFilterByArea] = useState([]);
   const [exploredFoods, setExploredFoods] = useState([]);
   const [exploredDrinks, setExploredDrinks] = useState([]);
   const [area, setArea] = useState([]);
@@ -47,6 +48,8 @@ function Provider({ children }) {
     setExploredDrinks,
     area,
     setArea,
+    filterByArea,
+    setFilterByArea,
   };
 
   return (

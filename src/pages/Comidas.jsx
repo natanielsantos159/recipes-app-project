@@ -17,6 +17,7 @@ export const renderCards = (food, index) => (
 
 const Comidas = () => {
   const { foods, Fetched, setFoods, setFetched, exploredFoods } = useContext(AppContext);
+
   useEffect(() => {
     fetchAllFoods().then((response) => setFoods(response));
     setFetched(true);
