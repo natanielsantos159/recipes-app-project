@@ -40,6 +40,12 @@ export const fetchMealsIngredients = async () => {
   return json.meals;
 };
 
+export const fetchMealsArea = async () => {
+  const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+  const json = await response.json();
+  return json.meals;
+};
+
 const getFoods = (filterRadio, filterText) => {
   switch (filterRadio) {
   case 'ingredient':

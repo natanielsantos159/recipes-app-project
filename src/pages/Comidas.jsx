@@ -7,7 +7,7 @@ import AppContext from '../context/AppContext';
 
 const maxRecipes = 12;
 
-const renderCards = (food, index) => (
+export const renderCards = (food, index) => (
   <Card
     key={ food.idMeal }
     receitas={ food }

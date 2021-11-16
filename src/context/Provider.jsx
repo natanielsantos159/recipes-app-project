@@ -12,6 +12,7 @@ function Provider({ children }) {
   const [drinks, setDrinks] = useState([]);
   const [exploredFoods, setExploredFoods] = useState([]);
   const [exploredDrinks, setExploredDrinks] = useState([]);
+  const [area, setArea] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [categories, setCategories] = useState([]);
   const [Fetched, setFetched] = useState(false);
@@ -44,6 +45,8 @@ function Provider({ children }) {
     setExploredFoods,
     exploredDrinks,
     setExploredDrinks,
+    area,
+    setArea,
   };
 
   return (
