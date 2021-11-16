@@ -81,15 +81,15 @@ const DetalhesComidas = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentMeal.strInstructions }</p>
           </div>
-          <div key={ currentMeal.idMeal }>
+          <section key={ currentMeal.idMeal }>
             <iframe
               title="video"
-              width="420"
+              width="330"
               height="315"
               data-testid="video"
               src={ currentMeal.strYoutube ? `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` : '' }
             />
-          </div>
+          </section>
           <button
             type="button"
             data-testid="start-recipe-btn"

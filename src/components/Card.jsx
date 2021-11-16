@@ -47,7 +47,15 @@ const useRenderCard = ({ receitas, index, dataTest }) => {
           alt={ receitas.strDrink }
           data-testid={ `${index}-card-img` }
         />
-        <h3 data-testid={ `${index}-card-name` }>{ receitas.strDrink }</h3>
+        <section>
+          <h3
+            className="card-title"
+            data-testid={ `${index}-card-name` }
+          >
+            { receitas.strDrink }
+
+          </h3>
+        </section>
       </div>
     </Link>);
 };
