@@ -4,8 +4,23 @@ import '../Styles/Card.css';
 
 const useRenderCard = ({ receitas, index, dataTest }) => {
   const { pathname } = useLocation();
-  if ((pathname === '/comidas') || (pathname === '/explorar/comidas/area')) {
+  if (receitas) {
+    if ((pathname === '/comidas') || (pathname === '/explorar/comidas/area')) {
+      return (
+        <Link to={ `/comidas/${receitas.idMeal}` }>
+          <div data-testid={ dataTest }>
+            <img
+              src={ receitas.strMealThumb }
+              alt={ receitas.strMeal }
+              data-testid={ `${index}-card-img` }
+            />
+            <h3 data-testid={ `${index}-card-name` }>{ receitas.strMeal }</h3>
+          </div>
+        </Link>
+      );
+    }
     return (
+
       <Link
         className="link-card"
         to={ `/comidas/${receitas.idMeal}` }
