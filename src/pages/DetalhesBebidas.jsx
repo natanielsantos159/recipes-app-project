@@ -8,6 +8,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
 import RecomendationCard from '../components/RecomendationCard';
+import DetailsButton from '../components/DetailsButton';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, foods, setFoods } = useContext(AppContext);
@@ -97,13 +98,7 @@ const DetalhesComidas = () => {
               ))
             }
           </section>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
+          <DetailsButton />
         </section>
       );
     }

@@ -10,6 +10,7 @@ import AppContext from '../context/AppContext';
 
 import '../Styles/Detalhes.css';
 import RecomendationCard from '../components/RecomendationCard';
+import DetailsButton from '../components/DetailsButton';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
@@ -101,13 +102,7 @@ const DetalhesComidas = () => {
               ))
             }
           </section>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-            className="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
+          <DetailsButton />
         </section>
       );
     }
