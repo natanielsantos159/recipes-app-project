@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { fetchMealsById } from '../api/meals';
 import { fetchAllDrinks } from '../api/drinks';
 
@@ -15,6 +15,7 @@ import DetailsButton from '../components/DetailsButton';
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     fetchMealsById(id).then(setRecipeDetail);
@@ -22,6 +23,7 @@ const DetalhesComidas = () => {
   }, [setRecipeDetail, setDrinks, id]);
 
   const currentMeal = recipeDetail[0];
+
   const renderDetails = () => {
     const magicNumber = 32;
 
