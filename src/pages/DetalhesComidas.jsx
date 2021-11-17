@@ -90,12 +90,6 @@ const DetalhesComidas = () => {
               src={ currentMeal.strYoutube ? `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` : '' }
             />
           </section>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
           <section className="recomendation-container">
             {
               drinks.map((drink, i) => (
@@ -107,6 +101,13 @@ const DetalhesComidas = () => {
               ))
             }
           </section>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="start-recipe-btn"
+          >
+            Iniciar Receita
+          </button>
         </section>
       );
     }

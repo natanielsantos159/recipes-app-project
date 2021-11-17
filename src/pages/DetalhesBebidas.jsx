@@ -86,12 +86,6 @@ const DetalhesComidas = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentDrinks.strInstructions }</p>
           </section>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
           <section className="recomendation-container">
             {
               foods.map((food, i) => (
@@ -103,6 +97,13 @@ const DetalhesComidas = () => {
               ))
             }
           </section>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="start-recipe-btn"
+          >
+            Iniciar Receita
+          </button>
         </section>
       );
     }
