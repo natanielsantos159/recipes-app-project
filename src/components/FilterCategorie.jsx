@@ -8,6 +8,7 @@ import { fetchFilterByCategorieFood,
   fetchCategorieFood,
   fetchAllFoods } from '../api/categorieFood';
 import AppContext from '../context/AppContext';
+import '../Styles/Header.css';
 
 const FilterCategorie = () => {
   const { pathname } = useLocation();
@@ -72,10 +73,11 @@ const FilterCategorie = () => {
   return (
     (pathname === '/comidas' || pathname === '/bebidas')
       && (
-        <section>
+        <section className="category-btn-container">
           <button
             type="button"
             data-testid="All-category-filter"
+            className="category-btn"
             onClick={ clickAll }
           >
             All
@@ -86,6 +88,7 @@ const FilterCategorie = () => {
                 <button
                   type="button"
                   key={ index }
+                  className="category-btn"
                   data-testid={ `${strCategory}-category-filter` }
                   onClick={ () => handleClick(strCategory) }
                 >

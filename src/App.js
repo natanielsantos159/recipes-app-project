@@ -18,6 +18,7 @@ import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitaFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import notFound from './components/notFound';
+import './Styles/Card.css';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 

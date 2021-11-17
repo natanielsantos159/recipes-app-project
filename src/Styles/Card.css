@@ -1,0 +1,40 @@
+a {
+  color: rgb(89, 70, 46);
+  text-decoration: none;
+}
+
+.card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.image-card {
+  border-radius: 5px;
+  height: 80px;
+  width: 80px;
+}
+
+.card-title {
+  font-size: 15px;
+}
+
+.link-card {
+  background-color: whitesmoke;
+  border: 1px solid rgb(217, 210, 210);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 30%;
+}
+
+.main-cards-container {
+  background-color: rgb(242, 240, 201);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 80px;
+}
