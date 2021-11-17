@@ -24,6 +24,7 @@ const DetalhesComidas = () => {
   const currentMeal = recipeDetail[0];
 
   const handleClick = () => {
+    setRecipeDetail(recipeDetail);
     history.push(`/comidas/${id}/in-progress`);
   };
 

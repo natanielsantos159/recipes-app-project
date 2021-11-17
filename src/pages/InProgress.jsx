@@ -1,14 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 
 import '../Styles/Detalhes.css';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
+import { fetchMealsById } from '../api/meals';
+import { fetchDrinksById } from '../api/drinks';
 
 const InProgress = () => {
-  const { recipeDetail } = useContext(AppContext);
+  const { pathname } = useLocation();
+  const { id } = useParams();
+  const { recipeDetail, setRecipeDetail } = useContext(AppContext);
   const currentRecipe = recipeDetail[0];
+
+  useEffect(() => {
+    if (pathname.includes('/comidas')) {
+      fetchMealsById(id).then(setRecipeDetail);
+    } else {
+      fetchDrinksById(id).then(setRecipeDetail);
+    }
+  }, [setRecipeDetail, id, pathname]);
 
   const filteredIngredients = () => {
     const filterIngredients = Object.entries(currentRecipe)
@@ -44,7 +57,7 @@ const InProgress = () => {
   };
 
   const renderInProgress = () => {
-    if (Object.getOwnPropertyDescriptor(currentRecipe, 'strDrink')) {
+    if (currentRecipe && currentRecipe.strDrink) {
       return (
         <section className="details-container">
           <img
@@ -101,7 +114,7 @@ const InProgress = () => {
       );
     }
 
-    if (Object.getOwnPropertyDescriptor(currentRecipe, 'strMeal')) {
+    if (currentRecipe && currentRecipe.strMeal) {
       return (
         <section className="details-container">
           <img
