@@ -1,13 +1,13 @@
-#page-title {
-  color: black;
-}
-
 .App {
   background-color: rgb(242, 240, 201);
   color: rgb(89, 70, 46);
   height: 640px;
   margin: auto;
   width: 360px;
+}
+
+.page-title {
+  color: black;
 }
 
 button {
