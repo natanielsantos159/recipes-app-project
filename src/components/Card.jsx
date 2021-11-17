@@ -7,72 +7,58 @@ const useRenderCard = ({ receitas, index, dataTest }) => {
   if (receitas) {
     if ((pathname === '/comidas') || (pathname === '/explorar/comidas/area')) {
       return (
-        <Link to={ `/comidas/${receitas.idMeal}` }>
-          <div data-testid={ dataTest }>
+        <Link
+          className="link-card"
+          to={ `/comidas/${receitas.idMeal}` }
+        >
+          <section
+            className="card"
+            data-testid={ dataTest }
+          >
             <img
+              className="image-card"
               src={ receitas.strMealThumb }
               alt={ receitas.strMeal }
               data-testid={ `${index}-card-img` }
             />
-            <h3 data-testid={ `${index}-card-name` }>{ receitas.strMeal }</h3>
-          </div>
+            <h3
+              data-testid={ `${index}-card-name` }
+              className="card-title"
+            >
+              { receitas.strMeal }
+
+            </h3>
+          </section>
         </Link>
       );
     }
     return (
-
       <Link
         className="link-card"
-        to={ `/comidas/${receitas.idMeal}` }
+        to={ `/bebidas/${receitas.idDrink}` }
       >
-        <section
-          className="card"
+        <div
           data-testid={ dataTest }
+          className="card"
         >
           <img
             className="image-card"
-            src={ receitas.strMealThumb }
-            alt={ receitas.strMeal }
+            src={ receitas.strDrinkThumb }
+            alt={ receitas.strDrink }
             data-testid={ `${index}-card-img` }
           />
-          <h3
-            data-testid={ `${index}-card-name` }
-            className="card-title"
-          >
-            { receitas.strMeal }
+          <section>
+            <h3
+              className="card-title"
+              data-testid={ `${index}-card-name` }
+            >
+              { receitas.strDrink }
 
-          </h3>
-        </section>
-      </Link>
-    );
+            </h3>
+          </section>
+        </div>
+      </Link>);
   }
-
-  return (
-    <Link
-      className="link-card"
-      to={ `/bebidas/${receitas.idDrink}` }
-    >
-      <div
-        data-testid={ dataTest }
-        className="card"
-      >
-        <img
-          className="image-card"
-          src={ receitas.strDrinkThumb }
-          alt={ receitas.strDrink }
-          data-testid={ `${index}-card-img` }
-        />
-        <section>
-          <h3
-            className="card-title"
-            data-testid={ `${index}-card-name` }
-          >
-            { receitas.strDrink }
-
-          </h3>
-        </section>
-      </div>
-    </Link>);
 };
 
 const Card = (receita) => (
