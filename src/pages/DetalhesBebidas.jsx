@@ -8,6 +8,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
 import RecomendationCard from '../components/RecomendationCard';
+import DetailsButton from '../components/DetailsButton';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, foods, setFoods } = useContext(AppContext);
@@ -20,10 +21,6 @@ const DetalhesComidas = () => {
   }, [setFoods, setRecipeDetail, id]);
 
   const currentDrinks = recipeDetail[0];
-
-  const handleClick = () => {
-    history.push(`/comidas/${id}/in-progress`);
-  };
 
   const renderDetails = () => {
     if (currentDrinks) {
@@ -91,13 +88,6 @@ const DetalhesComidas = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentDrinks.strInstructions }</p>
           </section>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-            onClick={ handleClick }
-          >
-            Iniciar Receita
-          </button>
           <section className="recomendation-container">
             {
               foods.map((food, i) => (
@@ -109,6 +99,7 @@ const DetalhesComidas = () => {
               ))
             }
           </section>
+          <DetailsButton />
         </section>
       );
     }

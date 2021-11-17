@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  padding-bottom: 45px;
 }
 
 .instructions {
@@ -31,6 +32,9 @@
   color: #a69888;
 }
 
-.title-details {
-  padding-bottom: -10px;
+.start-recipe-btn {
+  bottom: 0;
+  height: 30px;
+  position: fixed;
+  width: 330px;
 }

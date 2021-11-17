@@ -10,6 +10,7 @@ import AppContext from '../context/AppContext';
 
 import '../Styles/Detalhes.css';
 import RecomendationCard from '../components/RecomendationCard';
+import DetailsButton from '../components/DetailsButton';
 
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
@@ -22,11 +23,6 @@ const DetalhesComidas = () => {
   }, [setRecipeDetail, setDrinks, id]);
 
   const currentMeal = recipeDetail[0];
-
-  const handleClick = () => {
-    setRecipeDetail(recipeDetail);
-    history.push(`/comidas/${id}/in-progress`);
-  };
 
   const renderDetails = () => {
     const magicNumber = 32;
@@ -97,13 +93,6 @@ const DetalhesComidas = () => {
               src={ currentMeal.strYoutube ? `https://www.youtube.com/embed/${currentMeal.strYoutube.slice(magicNumber)}` : '' }
             />
           </section>
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-            onClick={ handleClick }
-          >
-            Iniciar Receita
-          </button>
           <section className="recomendation-container">
             {
               drinks.map((drink, i) => (
@@ -115,6 +104,7 @@ const DetalhesComidas = () => {
               ))
             }
           </section>
+          <DetailsButton />
         </section>
       );
     }

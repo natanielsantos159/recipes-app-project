@@ -38,7 +38,6 @@ const Bebidas = () => {
       <section className="main-cards-container">
         {exploredDrinks.length > 0 ? mainExplored : mainDrinks}
       </section>
-
       <Footer />
     </main>
   );

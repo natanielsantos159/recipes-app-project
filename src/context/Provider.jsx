@@ -18,6 +18,7 @@ function Provider({ children }) {
   const [categories, setCategories] = useState([]);
   const [Fetched, setFetched] = useState(false);
   const [recipeDetail, setRecipeDetail] = useState([]);
+  const [doneRecipes, setDoneRecipes] = useState([]);
 
   const contextValue = {
     loading,
@@ -50,6 +51,8 @@ function Provider({ children }) {
     setArea,
     filterByArea,
     setFilterByArea,
+    doneRecipes,
+    setDoneRecipes,
   };
 
   return (
