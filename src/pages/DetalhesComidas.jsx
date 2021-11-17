@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { fetchMealsById } from '../api/meals';
 import { fetchAllDrinks } from '../api/drinks';
 
@@ -14,6 +14,7 @@ import RecomendationCard from '../components/RecomendationCard';
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, drinks, setDrinks } = useContext(AppContext);
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     fetchMealsById(id).then(setRecipeDetail);
@@ -21,6 +22,12 @@ const DetalhesComidas = () => {
   }, [setRecipeDetail, setDrinks, id]);
 
   const currentMeal = recipeDetail[0];
+
+  const handleClick = () => {
+    setRecipeDetail(recipeDetail);
+    history.push(`/comidas/${id}/in-progress`);
+  };
+
   const renderDetails = () => {
     const magicNumber = 32;
 
@@ -93,6 +100,7 @@ const DetalhesComidas = () => {
           <button
             type="button"
             data-testid="start-recipe-btn"
+            onClick={ handleClick }
           >
             Iniciar Receita
           </button>
