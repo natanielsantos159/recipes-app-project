@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMealsById } from '../api/meals';
 import { fetchAllDrinks } from '../api/drinks';
+import FavoriteButton from '../components/FavoriteButton';
 
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import AppContext from '../context/AppContext';
 
@@ -66,9 +66,7 @@ const DetalhesComidas = () => {
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
             </button>
-            <button type="button" data-testid="favorite-btn">
-              <img src={ whiteHeartIcon } alt="Favoritar" />
-            </button>
+            <FavoriteButton />
           </section>
           <ul>
             {filterIngredients.map(([key, value], i) => (
