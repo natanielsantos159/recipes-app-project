@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-const FavoriteButton = () => {
+const FavoriteButton = ({ dataTest }) => {
   const { recipeDetail } = useContext(AppContext);
   const { pathname } = useLocation();
   const [verify, setVerify] = useState();
@@ -72,13 +73,17 @@ const FavoriteButton = () => {
   return (
     <button
       type="button"
-      data-testid="favorite-btn"
+      data-testid={ dataTest }
       onClick={ () => clickFavorite() }
       src={ setIcon() }
     >
       <img src={ setIcon() } alt="Favoritar" />
     </button>
   );
+};
+
+FavoriteButton.propTypes = {
+  dataTest: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;

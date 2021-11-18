@@ -66,7 +66,7 @@ const DetalhesComidas = () => {
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
             </button>
-            <FavoriteButton />
+            <FavoriteButton dataTest="favorite-btn" />
           </section>
           <ul>
             {filterIngredients.map(([key, value], i) => (
