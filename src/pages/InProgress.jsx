@@ -23,6 +23,16 @@ const InProgress = () => {
     }
   }, [setRecipeDetail, id, pathname]);
 
+  // const handleCheckbox = ({ target }) => {
+  //   let ingredients = [];
+
+  //   if (target.checked) {
+  //     ingredients = [...ingredients, target.name];
+  //   }
+
+  //   console.log(ingredients);
+  // };
+
   const filteredIngredients = () => {
     const filterIngredients = Object.entries(currentRecipe)
       .filter(([key, value]) => key.includes('strIngredient')
@@ -43,17 +53,20 @@ const InProgress = () => {
 
     return filterIngredients.map(([key, value], i) => (
       <label
-        key={ i }
         htmlFor={ i }
+        key={ i }
+        data-testid="ingredient-step"
       >
         {`${filterMeasure[i]} ${value}`}
         <input
           id={ i }
+          name={ `${filterMeasure[i]} ${value}` }
           type="checkbox"
-          data-testid={ `${i}-ingredient-step` }
           key={ key }
+          // onChange={ handleCheckbox }
         />
-      </label>));
+      </label>
+    ));
   };
 
   const renderInProgress = () => {
