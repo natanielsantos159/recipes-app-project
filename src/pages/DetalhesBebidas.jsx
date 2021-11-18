@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchAllFoods } from '../api/meals';
 import { fetchDrinksById } from '../api/drinks';
 import '../Styles/Detalhes.css';
@@ -13,7 +13,6 @@ import DetailsButton from '../components/DetailsButton';
 const DetalhesComidas = () => {
   const { recipeDetail, setRecipeDetail, foods, setFoods } = useContext(AppContext);
   const { id } = useParams();
-  const history = useHistory();
 
   useEffect(() => {
     fetchDrinksById(id).then(setRecipeDetail);
