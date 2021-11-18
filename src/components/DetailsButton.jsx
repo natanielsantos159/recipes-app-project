@@ -9,6 +9,7 @@ const DetailsButton = () => {
   const { recipeDetail,
     inProgressRecipes,
     setInProgressRecipes } = useContext(AppContext);
+  const { cocktails, meals } = inProgressRecipes;
   const history = useHistory();
   const [verify, setVerify] = useState();
 
@@ -16,8 +17,6 @@ const DetailsButton = () => {
     .filter(([key, value]) => key.includes('strIngredient')
         && (value !== '') && (value !== null));
   const ingredients = filterIngredients.map((e) => e[1]);
-
-  const { cocktails, meals } = inProgressRecipes;
 
   const createObj = () => {
     if (pathname.includes('comida')) {
@@ -41,7 +40,7 @@ const DetailsButton = () => {
     };
   };
 
-  const teste = () => {
+  const setTrueOrFalse = () => {
     if (pathname.includes('comidas')) {
       return setVerify(Object.keys(meals).some((e) => e === id));
     }
@@ -50,18 +49,16 @@ const DetailsButton = () => {
   };
 
   useEffect(() => {
-    teste();
+    setTrueOrFalse();
     const local = localStorage.getItem('inProgressRecipes');
     if (local) {
       setInProgressRecipes(JSON.parse(local));
     }
-    console.log('DidMount');
   }, []);
 
   useEffect(() => {
-    teste();
+    setTrueOrFalse();
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-    console.log('DidUpdate');
   }, [inProgressRecipes]);
 
   const startRecipe = async () => {
