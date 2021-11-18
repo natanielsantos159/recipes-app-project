@@ -12,7 +12,7 @@ const ReceitasFavoritas = () => {
       <button type="button" data-testid="filter-by-all-btn">All</button>
       <button type="button" data-testid="filter-by-food-btn">Food</button>
       <button type="button" data-testid="filter-by-drink-btn">Drinks</button>
-      {localFavorites.map((recipe, index) => (
+      {localFavorites ? localFavorites.map((recipe, index) => (
         <section key={ recipe.id }>
           <img
             src={ recipe.image }
@@ -26,7 +26,7 @@ const ReceitasFavoritas = () => {
           </button>
           <FavoriteButton dataTest={ `${index}-horizontal-favorite-btn` } />
         </section>
-      ))}
+      )) : null}
     </main>
   );
 };
