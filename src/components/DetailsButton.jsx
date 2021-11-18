@@ -4,46 +4,65 @@ import AppContext from '../context/AppContext';
 import '../Styles/Detalhes.css';
 
 const DetailsButton = () => {
-  const { id } = useParams();
   const { pathname } = useLocation();
-  const { recipeDetail, doneRecipes, setDoneRecipes } = useContext(AppContext);
-  const [isDone, setIsDone] = useState();
+  const { id } = useParams();
+  const { recipeDetail,
+    inProgressRecipes,
+    setInProgressRecipes } = useContext(AppContext);
+  const { cocktails, meals } = inProgressRecipes;
   const history = useHistory();
+  const [verify, setVerify] = useState();
+
+  const filterIngredients = Object.entries(recipeDetail[0])
+    .filter(([key, value]) => key.includes('strIngredient')
+        && (value !== '') && (value !== null));
+  const ingredients = filterIngredients.map((e) => e[1]);
+
+  const createObj = () => {
+    if (pathname.includes('comida')) {
+      return {
+        cocktails: {
+          ...cocktails,
+        },
+        meals: {
+          ...meals,
+          [id]: ingredients,
+        },
+      };
+    } return {
+      meals: {
+        ...meals,
+      },
+      cocktails: {
+        ...cocktails,
+        [id]: ingredients,
+      },
+    };
+  };
+
+  const setTrueOrFalse = () => {
+    if (pathname.includes('comidas')) {
+      return setVerify(Object.keys(meals).some((e) => e === id));
+    }
+
+    setVerify(Object.keys(cocktails).some((e) => e === id));
+  };
 
   useEffect(() => {
-    const recipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
-    setDoneRecipes(recipes);
-    setIsDone(doneRecipes.some((e) => e.id === id));
-    console.log('teste');
-  }, [isDone]);
-
-  const startRecipe = () => {
-    let obj;
-    if (pathname.includes('bebidas')) {
-      obj = {
-        id: recipeDetail[0].idDrink,
-        type: 'drink',
-        area: '',
-        category: recipeDetail[0].strCategory,
-        alcoholicOrNot: recipeDetail[0].strAlcoholic,
-        name: recipeDetail[0].strDrink,
-        image: recipeDetail[0].strDrinkThumb,
-      };
-    } else {
-      obj = {
-        id: recipeDetail[0].idMeal,
-        type: 'meal',
-        area: recipeDetail[0].strArea,
-        category: recipeDetail[0].strCategory,
-        alcoholicOrNot: '',
-        name: recipeDetail[0].strMeal,
-        image: recipeDetail[0].strMealThumb,
-      };
+    setTrueOrFalse();
+    const local = localStorage.getItem('inProgressRecipes');
+    if (local) {
+      setInProgressRecipes(JSON.parse(local));
     }
-    doneRecipes.push(obj);
-    setDoneRecipes(doneRecipes);
-    setIsDone(true);
-    localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
+  }, []);
+
+  useEffect(() => {
+    setTrueOrFalse();
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+  }, [inProgressRecipes]);
+
+  const startRecipe = async () => {
+    await setInProgressRecipes(createObj());
     history.push(`${pathname}/in-progress`);
   };
 
@@ -73,10 +92,9 @@ const DetailsButton = () => {
     </button>
   );
 
-  if (isDone) {
+  if (verify) {
     return buttonContinueRecipe();
-  }
-  return buttonInitRecipe();
+  } return buttonInitRecipe();
 };
 
 export default DetailsButton;

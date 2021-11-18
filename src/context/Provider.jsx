@@ -19,6 +19,8 @@ function Provider({ children }) {
   const [Fetched, setFetched] = useState(false);
   const [recipeDetail, setRecipeDetail] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([]);
+  const [inProgressRecipes,
+    setInProgressRecipes] = useState({ cocktails: {}, meals: {} });
 
   const contextValue = {
     loading,
@@ -51,6 +53,8 @@ function Provider({ children }) {
     setArea,
     filterByArea,
     setFilterByArea,
+    inProgressRecipes,
+    setInProgressRecipes,
     doneRecipes,
     setDoneRecipes,
   };

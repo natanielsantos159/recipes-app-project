@@ -10,9 +10,9 @@ import { fetchMealsById } from '../api/meals';
 import { fetchDrinksById } from '../api/drinks';
 
 const InProgress = () => {
+  const { recipeDetail, setRecipeDetail } = useContext(AppContext);
   const { pathname } = useLocation();
   const { id } = useParams();
-  const { recipeDetail, setRecipeDetail } = useContext(AppContext);
   const currentRecipe = recipeDetail[0];
 
   useEffect(() => {
@@ -22,16 +22,6 @@ const InProgress = () => {
       fetchDrinksById(id).then(setRecipeDetail);
     }
   }, [setRecipeDetail, id, pathname]);
-
-  // const handleCheckbox = ({ target }) => {
-  //   let ingredients = [];
-
-  //   if (target.checked) {
-  //     ingredients = [...ingredients, target.name];
-  //   }
-
-  //   console.log(ingredients);
-  // };
 
   const filteredIngredients = () => {
     const filterIngredients = Object.entries(currentRecipe)
@@ -55,7 +45,7 @@ const InProgress = () => {
       <label
         htmlFor={ i }
         key={ i }
-        data-testid="ingredient-step"
+        data-testid={ `${i}-ingredient-step` }
       >
         {`${filterMeasure[i]} ${value}`}
         <input
@@ -63,7 +53,6 @@ const InProgress = () => {
           name={ `${filterMeasure[i]} ${value}` }
           type="checkbox"
           key={ key }
-          // onChange={ handleCheckbox }
         />
       </label>
     ));
