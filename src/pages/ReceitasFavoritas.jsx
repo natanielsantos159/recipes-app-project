@@ -29,7 +29,10 @@ const card = (recipe, index) => {
         >
           <img src={ shareIcon } alt="Compartilhar" />
         </button>
-        <FavoriteButton dataTest={ `${index}-horizontal-favorite-btn` } />
+        <FavoriteButton
+          dataTest={ `${index}-horizontal-favorite-btn` }
+          idProps={ recipe.id }
+        />
       </section>);
   }
   return (
@@ -56,21 +59,23 @@ const card = (recipe, index) => {
         >
           <img src={ shareIcon } alt="Compartilhar" />
         </button>
-        <FavoriteButton dataTest={ `${index}-horizontal-favorite-btn` } />
+        <FavoriteButton
+          dataTest={ `${index}-horizontal-favorite-btn` }
+          idProps={ recipe.id }
+        />
       </section>
     </section>);
 };
 
 const ReceitasFavoritas = () => {
   const localFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  console.log(localFavorites);
   return (
     <main>
       <Header titlePage="Receitas Favoritas" show={ false } />
       <button type="button" data-testid="filter-by-all-btn">All</button>
       <button type="button" data-testid="filter-by-food-btn">Food</button>
       <button type="button" data-testid="filter-by-drink-btn">Drinks</button>
-      {localFavorites ? localFavorites.map(card) : null}
+      {localFavorites ? localFavorites.map(card) : ''}
     </main>
   );
 };

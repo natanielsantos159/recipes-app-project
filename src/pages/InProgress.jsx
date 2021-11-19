@@ -8,6 +8,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import AppContext from '../context/AppContext';
 import { fetchMealsById } from '../api/meals';
 import { fetchDrinksById } from '../api/drinks';
+import FavoriteButton from '../components/FavoriteButton';
 
 const InProgress = () => {
   const { recipeDetail, setRecipeDetail } = useContext(AppContext);
@@ -90,9 +91,7 @@ const InProgress = () => {
             <button type="button" data-testid="share-btn">
               <img src={ shareIcon } alt="Compartilhar" />
             </button>
-            <button type="button" data-testid="favorite-btn">
-              <img src={ whiteHeartIcon } alt="Favoritar" />
-            </button>
+            <FavoriteButton dataTest="favorite-btn" />
           </section>
           <div>
             {

@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-const FavoriteButton = ({ dataTest }) => {
+const FavoriteButton = ({ dataTest, idProps }) => {
   const { recipeDetail } = useContext(AppContext);
   const { pathname } = useLocation();
   const [verify, setVerify] = useState();
-  const { id } = useParams();
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const setTrueOrFalse = () => {
-    setVerify(favoriteRecipes.some((e) => e.id === id));
+    setVerify(favoriteRecipes.some((e) => e.id === idProps));
   };
 
   const createObj = () => {
@@ -44,7 +43,7 @@ const FavoriteButton = ({ dataTest }) => {
     if (!verify) {
       setFavoriteRecipes(createObj());
     } else {
-      const index = favoriteRecipes.findIndex((e) => e.id === id);
+      const index = favoriteRecipes.findIndex((e) => e.id === idProps);
       favoriteRecipes.splice(index, 1);
       setFavoriteRecipes(favoriteRecipes);
       setTrueOrFalse();
@@ -56,6 +55,8 @@ const FavoriteButton = ({ dataTest }) => {
     if (local) {
       setFavoriteRecipes(local);
     }
+    setTrueOrFalse();
+    console.log(verify);
   }, []);
 
   useEffect(() => {
@@ -84,6 +85,7 @@ const FavoriteButton = ({ dataTest }) => {
 
 FavoriteButton.propTypes = {
   dataTest: PropTypes.string.isRequired,
+  idProps: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
