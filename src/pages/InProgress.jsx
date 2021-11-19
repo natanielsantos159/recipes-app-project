@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 import '../Styles/Detalhes.css';
 import shareIcon from '../images/shareIcon.svg';
@@ -106,12 +106,14 @@ const InProgress = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentRecipe.strInstructions }</p>
           </section>
-          <button
-            type="button"
-            data-testid="finish-recipe-btn"
-          >
-            Finalizar Receita
-          </button>
+          <Link to="/receitas-feitas">
+            <button
+              type="button"
+              data-testid="finish-recipe-btn"
+            >
+              Finalizar Receita
+            </button>
+          </Link>
         </section>
       );
     }
@@ -157,12 +159,14 @@ const InProgress = () => {
             <h4>Instruções de preparo:</h4>
             <p data-testid="instructions">{ currentRecipe.strInstructions }</p>
           </section>
-          <button
-            type="button"
-            data-testid="finish-recipe-btn"
-          >
-            Finalizar Receita
-          </button>
+          <Link to="/receitas-feitas">
+            <button
+              type="button"
+              data-testid="finish-recipe-btn"
+            >
+              Finalizar Receita
+            </button>
+          </Link>
         </section>
       );
     }
