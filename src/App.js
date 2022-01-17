@@ -25,7 +25,7 @@ import './Styles/Card.css';
 function App() {
   return (
     <main className="App">
-      <BrowserRouter basename="/recipes-app-project/">
+      <BrowserRouter basename="/recipes-app-project">
         <Provider>
           <Switch>
             <Route exact path="/" component={ Login } />
