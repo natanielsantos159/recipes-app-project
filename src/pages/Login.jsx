@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import '../Styles/Login.css';
 
 function Login() {
   const history = useHistory();
@@ -25,7 +26,7 @@ function Login() {
 
   return (
     <main>
-      <form>
+      <form className="login-form">
         <input
           type="email"
           data-testid="email-input"
