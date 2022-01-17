@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import recipesIcon from '../images/recipeslogin.png';
 import '../Styles/Login.css';
 
 function Login() {
@@ -25,7 +26,9 @@ function Login() {
   }
 
   return (
-    <main>
+    <main className="login-page">
+      <img src={ recipesIcon } alt="Recipes App" className="login-icon"/>
+      <h1>Recipes App</h1>
       <form className="login-form">
         <input
           type="email"
